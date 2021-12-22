@@ -1,30 +1,27 @@
 def main():
-	textFile = open("input.txt", "r", encoding="utf8")
-	text = textFile.read().replace('\n', '')
-	textFile.close()
+	text_file = open("input.txt", "r", encoding="utf8")
+	text = text_file.read().replace('\n', '')
+	text_file.close()
 	
 	print("File loaded successfully...")
 	
-	numCharInQuotes = 0
-	totalChar = 0
+	num_char_in_quotes = 0
+	total_char = 0
 	
-	countingQuotes = False
+	counting_quotes = False
 	for char in text:
 		if(char == '\"' or char == "“" or char == "”"): #different kinds of quotes...
-			countingQuotes = not countingQuotes
-			#print("quote")
+			counting_quotes = not counting_quotes
 			continue
-		if(countingQuotes):
-			numCharInQuotes+=1
-		#print(char)
-		totalChar += 1 #Do this rather than len() because we aren't counting quotes as characters!
-		
-	ratio = numCharInQuotes/totalChar
+		if(counting_quotes):
+			num_char_in_quotes+=1
+		total_char += 1 #Do this rather than len() because we aren't counting quotes as characters!
+	ratio = num_char_in_quotes/total_char
 		
 	print("_"*50)
 	print("Analysis complete!\n")
-	print("Number of characters in quotes:    ",numCharInQuotes)
-	print("Total characters:                  ", totalChar)
+	print("Number of characters in quotes:    ",num_char_in_quotes)
+	print("Total characters:                  ", total_char)
 	print("Ratio (characters in quotes/total):", ratio, " (",(ratio*100),"%)")
 	print("_"*50)
 main()
